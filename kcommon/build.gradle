@@ -65,10 +65,6 @@ dependencies {
     implementation 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.1'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:2.2.1'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.2.30'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
 }
 repositories {
     mavenCentral()
