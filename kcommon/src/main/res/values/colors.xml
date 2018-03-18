@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="theme_color_primary">#fb7299</color>
+    <color name="theme_color_primary_dark">#b85671</color>
+    <color name="theme_color_primary_trans">#99f0486c</color>
+
+    <color name="colorDefault">#24C0C5</color>
+    <color name="colorPrimary">#24C0C5</color>
+    <color name="colorPrimaryDark">#24C0C5</color>
+    <color name="colorAccent">#24C0C5</color>
+
+    <color name="blue_light">#4cb7ff</color>
+    <color name="small_circle_blue">@color/blue_light</color>
+    <color name="small_circle_red">@color/red_light</color>
+    <color name="small_circle_orange">#ff9500</color>
+    <color name="green">#3fbc7e</color>
+
+    <color name="swiperefresh_color1">#ff00ddff</color>
+    <color name="swiperefresh_color2">#ffffbb33</color>
+    <color name="swiperefresh_color3">#ffff4444</color>
+    <color name="swiperefresh_color4">#ffaa66cc</color>
+
+    <color name="gray_bg">#f0f1f7</color>
+    <color name="alpha_white_0">#1affffff</color>
+    <color name="alpha_white_1">#8affffff</color>
+    <color name="alpha_white_2">#eeffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#eeeeee</color>
+    <color name="gray_text">#909090</color>
+    <color name="gray_light">#f5f5f5</color>
+    <color name="gray_dark1">#b0b0b0</color>
+    <color name="gray_dark2">#dedede</color>
+    <color name="gray_dark3">#dddddd</color>
+    <color name="red_light">#f24b17</color>
+    <color name="red_item">#DC6161</color>
+    <color name="red_dark">#c62828</color>
+    <color name="black">#000000</color>
+    <color name="black_text">#333333</color>
+    <color name="alpha_black">#80000000</color>
+    <color name="black_light">#0e0e0e</color>
+    <color name="text_yellow">#f1d398</color>
+
+    <color name="firstColor">#00BCD4</color>
+    <color name="secondColor">#E91E63</color>
+    <color name="thirdColor">#FF5722</color>
+    <color name="fourthColor">#4CAF50</color>
+
+
+
+
+    <color name="bg_page">#F8F8F8</color>
+</resources>

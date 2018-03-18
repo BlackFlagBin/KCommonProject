@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/default_view_top_margin"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_empty"
+            android:layout_width="@dimen/empty_icon_width"
+            android:layout_height="@dimen/empty_icon_height"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/nocontent_nohelp_3x"/>
+
+        <TextView
+            android:id="@+id/tv_empty_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/default_text_top_margin"
+            android:text="暂无数据"
+            android:textColor="@color/gray_dark1"
+            android:textSize="@dimen/text_big"/>
+
+        <Button
+            android:id="@+id/bt_retry"
+            android:layout_width="@dimen/default_button_width"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/default_text_top_margin"
+            android:background="@drawable/shape_button_border_grey"
+            android:text="点击重试"
+            android:textColor="@color/gray_dark1"
+            android:textSize="@dimen/text_big"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
