@@ -32,8 +32,7 @@ object ErrorHandler {
             }
 
             val resultCode = (e as IApiException).resultCode
-            CommonLibrary.instance.errorHandleMap?.filter { it.key == resultCode }?.get(0)?.handleError(
-                    e)
+            CommonLibrary.instance.errorHandleMap?.filter { it.key == resultCode }?.get(0)?.invoke(e)
         } else {
             when (e) {
                 is SocketTimeoutException -> Observable.just(1).observeOn(AndroidSchedulers.mainThread()).subscribe {

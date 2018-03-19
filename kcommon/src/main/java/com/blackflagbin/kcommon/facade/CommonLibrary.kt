@@ -2,7 +2,11 @@ package com.blackflagbin.kcommon.facade
 
 import android.app.Application
 import android.content.Context
-import com.blackflagbin.kcommon.listener.*
+import com.blackflagbin.kcommon.entity.net.IApiException
+import com.blackflagbin.kcommon.listener.OnPageCreateListener
+import com.blackflagbin.kcommon.listener.OnPageDestroyListener
+import com.blackflagbin.kcommon.listener.OnPagePauseListener
+import com.blackflagbin.kcommon.listener.OnPageResumeListener
 import com.blankj.utilcode.util.Utils
 
 class CommonLibrary private constructor() {
@@ -16,7 +20,7 @@ class CommonLibrary private constructor() {
     var startPage: Int = 1
     var pageSize: Int = 20
     var headerMap: Map<String, String>? = null
-    var errorHandleMap: Map<Int, ErrorHandleCallBack>? = null
+    var errorHandleMap: Map<Int, (exception: IApiException) -> Unit>? = null
     var onPageCreateListener: OnPageCreateListener? = null
     var onPageDestroyListener: OnPageDestroyListener? = null
     var onPageResumeListener: OnPageResumeListener? = null
@@ -32,7 +36,7 @@ class CommonLibrary private constructor() {
             startPage: Int = 1,
             pageSize: Int = 20,
             headerMap: Map<String, String>? = null,
-            errorHandleMap: Map<Int, ErrorHandleCallBack>? = null,
+            errorHandleMap: Map<Int, (exception: IApiException) -> Unit>? = null,
             onPageCreateListener: OnPageCreateListener? = null,
             onPageDestroyListener: OnPageDestroyListener? = null,
             onPageResumeListener: OnPageResumeListener? = null,

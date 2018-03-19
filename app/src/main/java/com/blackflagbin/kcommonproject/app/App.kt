@@ -6,7 +6,6 @@ import android.content.Intent
 import android.support.multidex.MultiDex
 import com.blackflagbin.kcommon.entity.net.IApiException
 import com.blackflagbin.kcommon.facade.CommonLibrary
-import com.blackflagbin.kcommon.listener.ErrorHandleCallBack
 import com.blackflagbin.kcommonproject.common.http.ApiService
 import com.blackflagbin.kcommonproject.common.http.CacheService
 import com.blankj.utilcode.util.SPUtils
@@ -39,11 +38,12 @@ class App : Application() {
                 ApiService::class.java,
                 CacheService::class.java,
                 spName = "KCommonDemo",
-                errorHandleMap = hashMapOf<Int, ErrorHandleCallBack>(401 to object :
-                        ErrorHandleCallBack {
-                    override fun handleError(exception: IApiException) {
+                errorHandleMap = hashMapOf<Int, (exception: IApiException) -> Unit>(401 to { exception ->
 
-                    }
+                }, 402 to { exception ->
+
+                }, 403 to { exception ->
+
                 }))
     }
 }
