@@ -1,7 +1,8 @@
-package com.blackflagbin.kcommonproject
+package com.blackflagbin.kcommonproject.ui.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import com.blackflagbin.kcommonproject.R
 
 class MainActivity : AppCompatActivity() {
 

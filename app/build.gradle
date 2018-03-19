@@ -5,38 +5,56 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.blackflagbin.kcommonproject"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 27
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file('key.jks')
+            storePassword "123456"
+            keyAlias "kcommon"
+            keyPassword "123456"
+        }
     }
     buildTypes {
+        debug {
+            buildConfigField "String", "APP_URL", "\"http://gank.io/\""
+            buildConfigField "String", "EXTRA_URL", "\"\""
+            def appName = "kcommon"
+            applicationIdSuffix ".debug"
+            manifestPlaceholders = [APPLICATION_NAME: "${appName}"]
+        }
         release {
+            buildConfigField "String", "APP_URL", "\"http://gank.io/\""
+            buildConfigField "String", "EXTRA_URL", "\"\""
             minifyEnabled false
+            signingConfig signingConfigs.release
+            def appName = "kcommon"
+            manifestPlaceholders = [APPLICATION_NAME: "${appName}"]
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
 }
 
 configurations.all {
     resolutionStrategy {
-        force 'android.arch.lifecycle:runtime:1.0.3'
+        force 'com.android.support:multidex:1.0.3'
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation (project(':kcommon')){
-        exclude group: 'com.android.support'
-    }
+    implementation project(':kcommon')
 }
