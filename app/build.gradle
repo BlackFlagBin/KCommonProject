@@ -54,7 +54,8 @@ configurations.all {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation project(':kcommon')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    api project(':kcommon')
+    //implementation 'com.blackflagbin:kcommonlibrary:0.0.1-test'
 }

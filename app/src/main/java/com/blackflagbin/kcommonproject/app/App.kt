@@ -2,15 +2,30 @@ package com.blackflagbin.kcommonproject.app
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.support.multidex.MultiDex
+import com.blackflagbin.kcommon.entity.net.IApiException
 import com.blackflagbin.kcommon.facade.CommonLibrary
+import com.blackflagbin.kcommon.listener.ErrorHandleCallBack
 import com.blackflagbin.kcommonproject.common.http.ApiService
 import com.blackflagbin.kcommonproject.common.http.CacheService
+import com.blankj.utilcode.util.SPUtils
 
 /**
  * Created by blackflagbin on 2018/3/19.
  */
 class App : Application() {
+
+    companion object {
+        fun startLoginActivity(context: Context, loginClazz: Class<*>) {
+            CommonLibrary.instance.headerMap = hashMapOf(
+                    "token" to SPUtils.getInstance("KCommonDemo").getString("token", ""))
+            context.startActivity(
+                    Intent(
+                            context,
+                            loginClazz).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+        }
+    }
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -19,12 +34,16 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        CommonLibrary.instance.initLibrary(
-                this,
+        CommonLibrary.instance.initLibrary(this,
                 "http://gank.io",
                 ApiService::class.java,
                 CacheService::class.java,
-                headerMap = hashMapOf(),
-                errorHandleMap = hashMapOf())
+                spName = "KCommonDemo",
+                errorHandleMap = hashMapOf<Int, ErrorHandleCallBack>(401 to object :
+                        ErrorHandleCallBack {
+                    override fun handleError(exception: IApiException) {
+
+                    }
+                }))
     }
 }
