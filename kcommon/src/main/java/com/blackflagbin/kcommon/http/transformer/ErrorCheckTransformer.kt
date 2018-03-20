@@ -2,6 +2,7 @@ package com.blackflagbin.kcommon.http.transformer
 
 
 import com.blackflagbin.kcommon.entity.net.ApiException
+import com.blackflagbin.kcommon.entity.net.IHttpResultEntity
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 

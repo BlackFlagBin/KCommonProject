@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#1D8BF7</color>
+    <color name="colorPrimaryDark">#1D8BF7</color>
+    <color name="colorAccent">#1D8BF7</color>
+    <color name="colorDefault">#1D8BF7</color>
+
+    <color name="grey_bg">#f0f1f7</color>
+    <color name="alpha_white_0">#1affffff</color>
+    <color name="alpha_white_1">#8affffff</color>
+    <color name="alpha_white_2">#eeffffff</color>
+    <color name="gray_text">#999999</color>
+    <color name="gray_dark1">#666666</color>
+    <color name="gray_dark2">#dedede</color>
+    <color name="red_light">#f24b17</color>
+    <color name="red_dark">#c62828</color>
+    <color name="black_text">#333333</color>
+    <color name="alpha_black">#50000000</color>
+    <color name="black_light">#0e0e0e</color>
+    <color name="yellow">#FDAE28</color>
+    <color name="green">#44D0B1</color>
+
+    <color name="grey">#999999</color>
+    <color name="grey_dark">#666666</color>
+    <color name="grey_light">#C0C0C0</color>
+    <color name="grey_light_alpha">#F7F7F7</color>
+    <color name="purple">#E900E2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#1D8BF7</color>
+    <color name="blue_light">#A3D1FF</color>
+    <color name="blue_gray">#8BABD9</color>
+    <color name="black">#282828</color>
+    <color name="black_dark">#1A1A1A</color>
+    <color name="red">#F71D1D</color>
+
+    <color name="gray_background">#F0F0F0</color>
+    <color name="black_background">#141415</color>
+    <color name="black_background_light">#191A1C</color>
 </resources>

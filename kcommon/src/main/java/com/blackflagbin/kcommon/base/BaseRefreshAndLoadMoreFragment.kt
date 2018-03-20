@@ -19,31 +19,31 @@ abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndL
     private var mIsLoadComplete = false
     private var mCurPage = CommonLibrary.instance.startPage
     private val PAGE_SIZE by lazy { CommonLibrary.instance.pageSize }
-    private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mLayoutManager: RecyclerView.LayoutManager
+    private var mRecyclerView: RecyclerView? = null
+    private var mLayoutManager: RecyclerView.LayoutManager? = null
 
     protected val emptyLayoutId: Int
         get() = R.layout.layout_empty
 
     protected abstract val adapter: BaseQuickAdapter<*, *>
 
-    protected abstract val recyclerView: RecyclerView
+    protected abstract val recyclerView: RecyclerView?
 
 
-    protected abstract val layoutManager: RecyclerView.LayoutManager
+    protected abstract val layoutManager: RecyclerView.LayoutManager?
 
     override fun initView() {
         super.initView()
         mRecyclerView = recyclerView
         mLayoutManager = layoutManager
-        mRecyclerView.layoutManager = mLayoutManager
+        mRecyclerView?.layoutManager = mLayoutManager
         mAdapter = adapter
         val noDataView = layoutInflater.inflate(
-                emptyLayoutId, mRecyclerView.parent as ViewGroup, false)
+                emptyLayoutId, mRecyclerView?.parent as ViewGroup, false)
         mAdapter?.emptyView = noDataView
         mAdapter?.setLoadMoreView(CustomLoadMoreView())
         mAdapter?.setOnLoadMoreListener(this, mRecyclerView)
-        mRecyclerView.adapter = mAdapter
+        mRecyclerView?.adapter = mAdapter
         mAdapter?.disableLoadMoreIfNotFullPage()
     }
 

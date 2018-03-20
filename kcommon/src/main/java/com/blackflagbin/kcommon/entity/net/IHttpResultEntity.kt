@@ -1,9 +1,10 @@
 package com.blackflagbin.kcommon.entity.net
 
 /**
- * Created by blackflagbin on 2018/3/15.
+ * Created by blackflagbin on 2017/9/25.
  */
-interface IHttpResultEntity<out T> {
+
+interface IHttpResultEntity<T> {
     val isSuccess: Boolean
 
     val errorCode: Int

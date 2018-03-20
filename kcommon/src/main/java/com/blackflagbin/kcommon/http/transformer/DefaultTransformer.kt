@@ -1,6 +1,7 @@
 package com.blackflagbin.kcommon.http.transformer
 
 
+import com.blackflagbin.kcommon.entity.net.IHttpResultEntity
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers

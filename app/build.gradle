@@ -25,14 +25,15 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "APP_URL", "\"http://gank.io/\""
-            buildConfigField "String", "EXTRA_URL", "\"\""
+            buildConfigField "String", "EXTRA_URL", "\"api/\""
+            minifyEnabled false
             def appName = "kcommon"
             applicationIdSuffix ".debug"
             manifestPlaceholders = [APPLICATION_NAME: "${appName}"]
         }
         release {
             buildConfigField "String", "APP_URL", "\"http://gank.io/\""
-            buildConfigField "String", "EXTRA_URL", "\"\""
+            buildConfigField "String", "EXTRA_URL", "\"api/\""
             minifyEnabled false
             signingConfig signingConfigs.release
             def appName = "kcommon"

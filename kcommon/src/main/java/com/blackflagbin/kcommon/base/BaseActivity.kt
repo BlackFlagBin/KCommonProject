@@ -36,9 +36,9 @@ abstract class BaseActivity<out A, out C, P : IBasePresenter, in D> : RxAppCompa
     private var mBundle: Bundle? = null
 
 
-    protected abstract val swipeRefreshView: SwipeRefreshLayout
+    protected abstract val swipeRefreshView: SwipeRefreshLayout?
 
-    protected abstract val multiStateView: MultiStateView
+    protected abstract val multiStateView: MultiStateView?
 
     protected abstract val layoutResId: Int
 

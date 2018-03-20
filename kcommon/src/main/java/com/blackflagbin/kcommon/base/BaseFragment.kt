@@ -43,9 +43,9 @@ abstract class BaseFragment<out A, out C, P : IBasePresenter, in D> : RxFragment
 
     private var isWaitingForOnFragmentResume = false
 
-    protected abstract val swipeRefreshView: SwipeRefreshLayout
+    protected abstract val swipeRefreshView: SwipeRefreshLayout?
 
-    protected abstract val multiStateView: MultiStateView
+    protected abstract val multiStateView: MultiStateView?
 
     protected abstract val layoutResId: Int
 
