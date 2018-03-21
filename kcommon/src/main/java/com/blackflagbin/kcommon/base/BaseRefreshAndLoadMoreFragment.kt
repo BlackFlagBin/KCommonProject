@@ -12,7 +12,7 @@ import com.kennyc.view.MultiStateView
  * Created by blackflagbin on 2017/9/22.
  */
 
-abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndLoadMorePresenter, in D : ILoadMoreData> :
+abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndLoadMorePresenter, D> :
         BaseFragment<A, C, P, D>(), BaseQuickAdapter.RequestLoadMoreListener,
         IBaseRefreshAndLoadMoreView<D> {
     protected var mAdapter: BaseQuickAdapter<*, *>? = null
@@ -49,7 +49,11 @@ abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndL
 
     override fun showSuccessView(data: D) {
         mMultiStateView?.viewState = MultiStateView.VIEW_STATE_CONTENT
-        mAdapter?.setNewData(data.list)
+        if (data is List<*>) {
+            mAdapter?.setNewData(data as List<Nothing>)
+        } else {
+            mAdapter?.setNewData((data as ILoadMoreData).list as List<Nothing>)
+        }
         showContentView(data)
     }
 
@@ -59,9 +63,14 @@ abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndL
         mCurPage = 1
     }
 
-    override fun afterLoadMore(data: List<Nothing>) {
-        mIsLoadComplete = data.size < PAGE_SIZE
-        mAdapter?.addData(data)
+    override fun afterLoadMore(data: D) {
+        if (data is List<*>) {
+            mIsLoadComplete = data.size < PAGE_SIZE
+            mAdapter?.addData(data as List<Nothing>)
+        } else {
+            mIsLoadComplete = (data as ILoadMoreData).list.size < PAGE_SIZE
+            mAdapter?.addData((data as ILoadMoreData).list as List<Nothing>)
+        }
         mCurPage++
         mAdapter?.loadMoreComplete()
         mSwipeRefresh?.isEnabled = true

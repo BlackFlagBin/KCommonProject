@@ -10,13 +10,20 @@ import io.reactivex.observers.ResourceObserver
 
 class NoProgressObserver<T>(
         private val mBaseView: IBaseView<T>,
-        private val mCallBack: ObserverCallBack<T>,
+        private val mCallBack: ObserverCallBack<T> = object : ObserverCallBack<T> {
+            override fun onNext(t: T) {
+            }
+
+            override fun onError(e: Throwable) {
+            }
+
+        },
         private val mIsLoadMore: Boolean = false) : ResourceObserver<T>() {
 
     override fun onNext(t: T) {
         if (mIsLoadMore) {
-            if (mBaseView is IBaseRefreshAndLoadMoreView<*>) {
-                mBaseView.afterLoadMore((t as ILoadMoreData).list)
+            if (mBaseView is IBaseRefreshAndLoadMoreView<T>) {
+                mBaseView.afterLoadMore(t)
             }
         }
         mCallBack.onNext(t)
@@ -26,7 +33,6 @@ class NoProgressObserver<T>(
         ErrorHandler.handleError(e, mBaseView)
         if (mIsLoadMore) {
             if (mBaseView is IBaseRefreshAndLoadMoreView<T>) {
-                mBaseView.showTip("无网络")
                 mBaseView.afterLoadMoreError(e)
             }
         } else {

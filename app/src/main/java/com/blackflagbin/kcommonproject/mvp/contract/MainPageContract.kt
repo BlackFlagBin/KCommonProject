@@ -18,5 +18,5 @@ interface MainPageContract {
 
     }
 
-    interface IMainPageView : IBaseRefreshAndLoadMoreView<ILoadMoreData>
+    interface IMainPageView : IBaseRefreshAndLoadMoreView<List<DataItem>>
 }

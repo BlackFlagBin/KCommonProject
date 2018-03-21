@@ -3,20 +3,25 @@ package com.blackflagbin.kcommon.http.subscribers
 import android.app.Activity
 import android.content.Context
 import android.support.v4.app.Fragment
-
 import com.blackflagbin.kcommon.base.IBaseRefreshAndLoadMoreView
 import com.blackflagbin.kcommon.base.IBaseView
-import com.blackflagbin.kcommon.base.ILoadMoreData
 import com.blackflagbin.kcommon.http.ErrorHandler
 import com.blackflagbin.kcommon.http.progress.ProgressCancelListener
 import com.blackflagbin.kcommon.http.progress.ProgressDialogHandler
-
 import io.reactivex.observers.ResourceObserver
 
 class ProgressObserver<T>(
         private val mBaseView: IBaseView<T>,
-        private val mCallBack: ObserverCallBack<T>,
+        private val mCallBack: ObserverCallBack<T> = object : ObserverCallBack<T> {
+            override fun onNext(t: T) {
+            }
+
+            override fun onError(e: Throwable) {
+            }
+
+        },
         private val mIsLoadMore: Boolean = false) : ResourceObserver<T>(), ProgressCancelListener {
+
     private lateinit var mProgressDialogHandler: ProgressDialogHandler
 
     private lateinit var mContext: Context
@@ -37,8 +42,8 @@ class ProgressObserver<T>(
 
     override fun onNext(t: T) {
         if (mIsLoadMore) {
-            if (mBaseView is IBaseRefreshAndLoadMoreView<*>) {
-                mBaseView.afterLoadMore((t as ILoadMoreData).list)
+            if (mBaseView is IBaseRefreshAndLoadMoreView<T>) {
+                mBaseView.afterLoadMore(t)
             }
         }
         mCallBack.onNext(t)
@@ -48,7 +53,6 @@ class ProgressObserver<T>(
         ErrorHandler.handleError(e, mBaseView)
         if (mIsLoadMore) {
             if (mBaseView is IBaseRefreshAndLoadMoreView<*>) {
-                mBaseView.showTip("无网络")
                 mBaseView.afterLoadMoreError(e)
             }
         } else {

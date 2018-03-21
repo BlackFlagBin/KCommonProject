@@ -2,17 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.blackflagbin.kcommonproject">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         xmlns:tools="http://schemas.android.com/tools"
         android:name=".app.App"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/avatar"
         android:label="${APPLICATION_NAME}"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:theme="@style/StartPageTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

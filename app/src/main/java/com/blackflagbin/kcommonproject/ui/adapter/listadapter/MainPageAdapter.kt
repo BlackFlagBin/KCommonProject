@@ -1,4 +1,4 @@
-package com.blackflagbin.kcommonproject.ui.adapter
+package com.blackflagbin.kcommonproject.ui.adapter.listadapter
 
 import com.blackflagbin.kcommonproject.R
 import com.blackflagbin.kcommonproject.common.entity.net.DataItem
@@ -11,5 +11,6 @@ class MainPageAdapter(
 
     override fun convert(
             helper: BaseViewHolder, item: DataItem) {
+        helper.setText(R.id.tv_name, item.desc)
     }
 }

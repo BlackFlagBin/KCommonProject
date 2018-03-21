@@ -1,7 +1,6 @@
 package com.blackflagbin.kcommon.base
 
 import android.os.Bundle
-import java.util.ArrayList
 
 
 interface IBaseApiService
@@ -38,12 +37,12 @@ interface IBaseView<in T> {
 }
 
 interface ILoadMoreData {
-    val list: List<Nothing>
+    val list: List<*>
 }
 
-interface IBaseRefreshAndLoadMoreView<in ILoadMoreData> : IBaseView<ILoadMoreData> {
+interface IBaseRefreshAndLoadMoreView<T> : IBaseView<T> {
     fun beforeInitData()
-    fun afterLoadMore(data: List<Nothing>)
+    fun afterLoadMore(data: T)
     fun afterLoadMoreError(e: Throwable)
 
 }
