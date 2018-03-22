@@ -25,7 +25,7 @@ abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndL
     protected val emptyLayoutId: Int
         get() = R.layout.layout_empty
 
-    protected abstract val adapter: BaseQuickAdapter<*, *>
+    protected abstract val adapter: BaseQuickAdapter<*, *>?
 
     protected abstract val recyclerView: RecyclerView?
 

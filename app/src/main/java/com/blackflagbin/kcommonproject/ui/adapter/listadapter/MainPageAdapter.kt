@@ -11,6 +11,8 @@ class MainPageAdapter(
 
     override fun convert(
             helper: BaseViewHolder, item: DataItem) {
-        helper.setText(R.id.tv_name, item.desc)
+        helper.setText(R.id.tv_title, item.desc)
+        helper.setText(R.id.tv_date, item.publishedAt.split("T")[0])
+        helper.setText(R.id.tv_creator, item.who)
     }
 }

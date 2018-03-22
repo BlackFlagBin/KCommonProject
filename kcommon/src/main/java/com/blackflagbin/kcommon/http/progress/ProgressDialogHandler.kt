@@ -50,8 +50,8 @@ class ProgressDialogHandler(
 
     companion object {
 
-        public val SHOW_PROGRESS_DIALOG = 1
-        public val DISMISS_PROGRESS_DIALOG = 2
+        val SHOW_PROGRESS_DIALOG = 1
+        val DISMISS_PROGRESS_DIALOG = 2
     }
 
 }

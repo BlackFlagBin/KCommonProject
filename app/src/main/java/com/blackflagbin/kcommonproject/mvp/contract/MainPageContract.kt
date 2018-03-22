@@ -14,9 +14,7 @@ interface MainPageContract {
         fun getData(type: String, pageNo: Int, limit: Int): Observable<List<DataItem>>
     }
 
-    interface IMainPagePresenter : IBaseRefreshAndLoadMorePresenter {
-
-    }
+    interface IMainPagePresenter : IBaseRefreshAndLoadMorePresenter
 
     interface IMainPageView : IBaseRefreshAndLoadMoreView<List<DataItem>>
 }

@@ -11,10 +11,12 @@ import com.blackflagbin.kcommonproject.common.http.ApiService
 import com.blackflagbin.kcommonproject.common.http.CacheService
 import com.blackflagbin.kcommonproject.mvp.contract.MainPageContract
 import com.blackflagbin.kcommonproject.mvp.presenter.MainPagePresenter
+import com.blackflagbin.kcommonproject.ui.activity.WebActivity
 import com.blackflagbin.kcommonproject.ui.adapter.listadapter.MainPageAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.kennyc.view.MultiStateView
 import kotlinx.android.synthetic.main.fragment_main_page.*
+import org.jetbrains.anko.bundleOf
 
 /**
  * Created by blackflagbin on 2018/3/20.
@@ -29,7 +31,7 @@ class MainPageFragment() :
 
     private lateinit var mType: String
 
-    override val adapter: BaseQuickAdapter<*, *>
+    override val adapter: BaseQuickAdapter<*, *>?
         get() = MainPageAdapter(arrayListOf())
 
     override val recyclerView: RecyclerView?
@@ -60,5 +62,12 @@ class MainPageFragment() :
     }
 
     override fun showContentView(data: List<DataItem>) {
+        mAdapter?.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
+            startActivity(
+                    WebActivity::class.java,
+                    bundleOf(
+                            "url" to (mAdapter?.data!![position] as DataItem).url,
+                            "title" to (mAdapter?.data!![position] as DataItem).desc))
+        }
     }
 }

@@ -1,7 +1,5 @@
 package com.blackflagbin.kcommonproject
 
-import org.junit.Test
-
 import org.junit.Assert.*
 
 /**
