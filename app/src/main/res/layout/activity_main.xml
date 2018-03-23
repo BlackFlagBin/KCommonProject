@@ -41,7 +41,7 @@
                         android:elevation="10dp">
 
                         <RelativeLayout
-                            android:id="@+id/rl_msg"
+                            android:id="@+id/rl_right"
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="right"

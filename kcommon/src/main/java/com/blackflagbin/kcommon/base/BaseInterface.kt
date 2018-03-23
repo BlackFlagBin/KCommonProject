@@ -1,6 +1,7 @@
 package com.blackflagbin.kcommon.base
 
 import android.os.Bundle
+import org.jetbrains.anko.bundleOf
 
 
 interface IBaseApiService
@@ -14,7 +15,7 @@ interface IBaseRefreshAndLoadMorePresenter : IBasePresenter {
 }
 
 interface IBaseView<in T> {
-    fun startActivity(claz: Class<*>, bundle: Bundle?)
+    fun startActivity(claz: Class<*>, bundle: Bundle? = bundleOf())
 
     fun finishActivity()
 

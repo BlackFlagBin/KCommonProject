@@ -47,7 +47,7 @@
         android:textSize="14sp"/>
 
     <LinearLayout
-        android:id="@+id/ll_user_center"
+        android:id="@+id/ll_read_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -74,7 +74,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_open_lock_record"
+        android:id="@+id/ll_more_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -100,7 +100,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_setting"
+        android:id="@+id/ll_clear_cache"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"

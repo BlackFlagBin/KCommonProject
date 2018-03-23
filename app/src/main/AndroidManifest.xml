@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".ui.activity.WebActivity">
         </activity>
+        <activity android:name=".ui.activity.AboutMeActivity">
+        </activity>
     </application>
 
 </manifest>

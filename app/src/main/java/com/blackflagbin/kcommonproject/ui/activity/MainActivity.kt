@@ -14,11 +14,13 @@ import com.kennyc.view.MultiStateView
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_main_drawer.*
+import org.jetbrains.anko.bundleOf
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>(),
         MainContract.IMainView {
     private val AVATAR_URL = "https://avatars2.githubusercontent.com/u/17843145?s=400&u=d417a5a50d47426c0f0b6b9ff64d626a36bf0955&v=4"
+    private val ABOUT_ME_URL = "https://avatars2.githubusercontent.com/u/17843145?s=400&u=d417a5a50d47426c0f0b6b9ff64d626a36bf0955&v=4"
 
     override val swipeRefreshView: SwipeRefreshLayout?
         get() = null
@@ -37,6 +39,23 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
 
         setupSlidingView()
         setupViewPager()
+        rl_right.onClick {
+            startActivity(
+                    WebActivity::class.java,
+                    bundleOf("url" to ABOUT_ME_URL, "title" to "ReadMe"))
+        }
+        ll_read_me.onClick {
+            startActivity(
+                    WebActivity::class.java,
+                    bundleOf("url" to "https://github.com/BlackFlagBin", "title" to "ReadMe"))
+        }
+        ll_more_project.onClick {
+            startActivity(
+                    WebActivity::class.java, bundleOf("url" to "", "title" to "ReadMe"))
+        }
+        ll_clear_cache.onClick { clearCache() }
+
+
     }
 
     override fun initData() {
@@ -63,6 +82,10 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
                 R.mipmap.avatar).error(R.mipmap.avatar).dontAnimate().transform(
                 GlideCircleTransform(
                         this)).into(iv_user_avatar)
+    }
+
+    private fun clearCache() {
+
     }
 
 }
