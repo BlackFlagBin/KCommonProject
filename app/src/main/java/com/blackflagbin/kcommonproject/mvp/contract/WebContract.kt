@@ -1,8 +1,7 @@
 package com.blackflagbin.kcommonproject.mvp.contract
 
-import com.blackflagbin.kcommon.base.*
-import com.blackflagbin.kcommonproject.common.entity.net.DataItem
-import io.reactivex.Observable
+import com.blackflagbin.kcommon.base.IBasePresenter
+import com.blackflagbin.kcommon.base.IBaseView
 
 /**
  * Created by blackflagbin on 2018/3/20.

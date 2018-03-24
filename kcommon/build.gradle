@@ -6,7 +6,7 @@ publish {
     userOrg = 'blackflagbin' //bintray注册的用户名
     groupId = 'com.blackflagbin' //compile引用时的第1部分groupId
     artifactId = 'kcommonlibrary' //compile引用时的第2部分项目名
-    publishVersion = '0.0.1-test' //compile引用时的第3部分版本号
+    publishVersion = '0.0.2-test' //compile引用时的第3部分版本号
     desc = '快速基础开发框架kotlin实现'
     website = 'https://github.com/BlackFlagBin/QuickDevProject'
 }
@@ -14,8 +14,6 @@ publish {
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.2"
-
-
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 27
@@ -23,8 +21,16 @@ android {
         versionName "1.0"
         multiDexEnabled true
     }
-
+    aaptOptions {
+        cruncherEnabled false
+    }
+    lintOptions {
+        abortOnError false
+    }
     buildTypes {
+        debug {
+            minifyEnabled false
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

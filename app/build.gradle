@@ -14,6 +14,12 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    aaptOptions {
+        cruncherEnabled false
+    }
+    lintOptions {
+        abortOnError false
+    }
     signingConfigs {
         release {
             storeFile file('key.jks')
@@ -60,4 +66,7 @@ dependencies {
     api 'com.yarolegovich:sliding-root-nav:1.1.0'
     api project(':kcommon')
     //implementation 'com.blackflagbin:kcommonlibrary:0.0.1-test'
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
 }

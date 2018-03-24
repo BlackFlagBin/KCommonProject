@@ -2,7 +2,6 @@ package com.blackflagbin.kcommonproject.mvp.contract
 
 import com.blackflagbin.kcommon.base.IBaseRefreshAndLoadMorePresenter
 import com.blackflagbin.kcommon.base.IBaseRefreshAndLoadMoreView
-import com.blackflagbin.kcommon.base.ILoadMoreData
 import com.blackflagbin.kcommonproject.common.entity.net.DataItem
 import io.reactivex.Observable
 

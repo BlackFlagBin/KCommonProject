@@ -7,6 +7,7 @@ import com.blackflagbin.kcommonproject.mvp.model.WebModel
 class WebPresenter(iWebView: WebContract.IWebView) :
         BasePresenter<WebContract.IWebModel, WebContract.IWebView>(iWebView),
         WebContract.IWebPresenter {
+
     override val model: WebContract.IWebModel
         get() = WebModel()
 
