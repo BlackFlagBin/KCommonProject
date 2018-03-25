@@ -11,8 +11,9 @@ import java.util.concurrent.TimeUnit
  * Created by blackflagbin on 2018/3/19.
  */
 interface CacheService {
-    @LifeCache(duration = 2, timeUnit = TimeUnit.MINUTES)
+    @LifeCache(duration = 10, timeUnit = TimeUnit.MINUTES)
     fun getMainDataList(
             observable: Observable<List<DataItem>>,
-            keyGroup: DynamicKeyGroup): Observable<List<DataItem>>
+            keyGroup: DynamicKeyGroup,
+            evictDynamicKeyGroup: EvictDynamicKeyGroup): Observable<List<DataItem>>
 }

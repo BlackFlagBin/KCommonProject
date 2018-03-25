@@ -30,7 +30,7 @@ class HttpProvider private constructor() {
         CommonLibrary.instance.context.cacheDir.setWritable(true)
         return RxCache.Builder().persistence(
                 CommonLibrary.instance.context.cacheDir, GsonSpeaker()).using(
-                CommonLibrary.instance.cacheClass) as T
+                        CommonLibrary.instance.cacheClass) as T
     }
 
     private fun provideOkHttpClient(headerMap: Map<String, String>? = CommonLibrary.instance.headerMap): OkHttpClient {

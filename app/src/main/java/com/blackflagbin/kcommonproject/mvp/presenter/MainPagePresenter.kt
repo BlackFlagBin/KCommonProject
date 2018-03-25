@@ -7,6 +7,7 @@ import com.blackflagbin.kcommon.http.subscribers.ObserverCallBack
 import com.blackflagbin.kcommonproject.common.entity.net.DataItem
 import com.blackflagbin.kcommonproject.mvp.contract.MainPageContract
 import com.blackflagbin.kcommonproject.mvp.model.MainPageModel
+import com.blankj.utilcode.util.NetworkUtils
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 
 class MainPagePresenter(iMainPageView: MainPageContract.IMainPageView) :
@@ -20,6 +21,9 @@ class MainPagePresenter(iMainPageView: MainPageContract.IMainPageView) :
     }
 
     override fun initData(dataMap: Map<String, String>?, pageNo: Int) {
+        if (!NetworkUtils.isConnected()) {
+            mView.showTip("网络已断开，当前数据为缓存数据")
+        }
         if (pageNo == CommonLibrary.instance.startPage) {
             mView.beforeInitData()
             mModel.getData(

@@ -26,6 +26,10 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
     private val ABOUT_ME_URL = "https://github.com/BlackFlagBin"
     private val READ_ME_URL = "https://github.com/BlackFlagBin/KCommonProject/blob/master/README.md"
     private val MORE_PROJECT_URL = "https://github.com/BlackFlagBin?tab=repositories"
+    private val mTypeArray: Array<String> by lazy {
+        arrayOf("all", "Android", "iOS", "休息视频", "福利", "拓展资源", "前端", "瞎推荐", "App")
+    }
+
 
     override val swipeRefreshView: SwipeRefreshLayout?
         get() = null
@@ -71,6 +75,7 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
     private fun setupViewPager() {
         vp_content.adapter = MainPagerAdapter(supportFragmentManager)
         tl_type.setupWithViewPager(vp_content)
+        vp_content.offscreenPageLimit = mTypeArray.size - 1
     }
 
     private fun setupSlidingView() {

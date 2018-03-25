@@ -6,6 +6,7 @@ import android.content.Intent
 import android.support.multidex.MultiDex
 import com.blackflagbin.kcommon.entity.net.IApiException
 import com.blackflagbin.kcommon.facade.CommonLibrary
+import com.blackflagbin.kcommonproject.BuildConfig
 import com.blackflagbin.kcommonproject.common.http.ApiService
 import com.blackflagbin.kcommonproject.common.http.CacheService
 import com.blankj.utilcode.util.SPUtils
@@ -44,6 +45,7 @@ class App : Application() {
 
                 }, 403 to { exception ->
 
-                }))
+                }),
+                isDebug = BuildConfig.DEBUG)
     }
 }
