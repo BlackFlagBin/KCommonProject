@@ -17,6 +17,9 @@ import com.kennyc.view.MultiStateView
 import kotlinx.android.synthetic.main.activity_web.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import android.content.Intent
+import android.net.Uri
+
 
 class WebActivity : BaseActivity<ApiService, CacheService, WebPresenter, Any?>(),
         WebContract.IWebView {
@@ -45,11 +48,7 @@ class WebActivity : BaseActivity<ApiService, CacheService, WebPresenter, Any?>()
     override fun initView() {
         super.initView()
         rl_left.onClick {
-            if (webView.canGoBack()) {
-                webView.goBack()
-            } else {
-                finish()
-            }
+           finish()
         }
         tv_middle.text = mTitle
 
@@ -77,8 +76,19 @@ class WebActivity : BaseActivity<ApiService, CacheService, WebPresenter, Any?>()
 
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 mUrl = url
-                view.loadUrl(mUrl)
-                return true
+                return try {
+                    if (url.startsWith("http:") || url.startsWith("https:")) {
+                        view.loadUrl(url)
+                        true
+                    } else {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                        true
+                    }
+                } catch (e: Exception) { //防止crash (如果手机上没有安装处理某个scheme开头的url的APP, 会导致crash)
+                    false
+                }
+
             }
 
         }

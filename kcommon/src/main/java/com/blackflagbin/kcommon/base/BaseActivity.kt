@@ -75,49 +75,58 @@ abstract class BaseActivity<out A, out C, P : IBasePresenter, in D> : RxAppCompa
         CommonLibrary.instance.onPageDestroyListener?.onPageDestroy(this)
     }
 
+    //刷新
     override fun onRefresh() {
         mPresenter.initData(mDataMap)
     }
 
-
+    //跳转activity
     override fun startActivity(claz: Class<*>, bundle: Bundle?) {
         val intent = Intent(this, claz)
         bundle?.let { intent.putExtras(it) }
         startActivity(intent)
     }
 
-
+    //结束activity
     override fun finishActivity() {
         finish()
     }
 
+    //显示Toast
     override fun showTip(tipMsg: String) {
         toast(tipMsg)
     }
 
+    //显示加载中
     override fun showLoading() {
         mSwipeRefresh?.isRefreshing = true
     }
 
+    //取消显示加载中
     override fun dismissLoading() {
         mSwipeRefresh?.isRefreshing = false
     }
 
+    //显示成功布局
     override fun showSuccessView(data: D) {
         mMultiStateView?.viewState = MultiStateView.VIEW_STATE_CONTENT
         showContentView(data)
     }
 
+    //显示空布局
     override fun showEmptyView() {
         mMultiStateView?.viewState = MultiStateView.VIEW_STATE_EMPTY
     }
 
+    //显示错误布局
     override fun showErrorView(errorMsg: String) {
         mMultiStateView?.viewState = MultiStateView.VIEW_STATE_ERROR
     }
 
+    //接收从上一个页面传递的参数
     protected open fun onExtraBundleReceived(bundle: Bundle) {}
 
+    //初始化视图
     protected open fun initView() {
         setContentView(layoutResId)
         mBundle = intent.extras
@@ -147,7 +156,9 @@ abstract class BaseActivity<out A, out C, P : IBasePresenter, in D> : RxAppCompa
         }
     }
 
+    //加载网络数据
     protected abstract fun initData()
 
+    //显示加载数据成功后的内容
     protected abstract fun showContentView(data: D)
 }
