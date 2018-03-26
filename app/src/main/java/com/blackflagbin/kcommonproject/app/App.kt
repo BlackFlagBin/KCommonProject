@@ -35,7 +35,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         CommonLibrary.instance.initLibrary(this,
-                "http://gank.io",
+                BuildConfig.APP_URL,
                 ApiService::class.java,
                 CacheService::class.java,
                 spName = "KCommonDemo",

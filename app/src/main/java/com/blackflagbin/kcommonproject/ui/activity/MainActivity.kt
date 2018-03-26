@@ -72,12 +72,6 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
     override fun showContentView(data: Any?) {
     }
 
-    private fun setupViewPager() {
-        vp_content.adapter = MainPagerAdapter(supportFragmentManager)
-        tl_type.setupWithViewPager(vp_content)
-        vp_content.offscreenPageLimit = mTypeArray.size - 1
-    }
-
     private fun setupSlidingView() {
         val slidingRootNav = SlidingRootNavBuilder(this).withToolbarMenuToggle(
                 tb_main).withMenuOpened(
@@ -89,6 +83,12 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
                 R.mipmap.avatar).error(R.mipmap.avatar).dontAnimate().transform(
                 GlideCircleTransform(
                         this)).into(iv_user_avatar)
+    }
+
+    private fun setupViewPager() {
+        vp_content.adapter = MainPagerAdapter(supportFragmentManager)
+        tl_type.setupWithViewPager(vp_content)
+        vp_content.offscreenPageLimit = mTypeArray.size - 1
     }
 
     private fun clearCache() {
