@@ -68,7 +68,7 @@ dependencies {
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
     compile 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.1'
     compile 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:2.2.1'
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.2.30'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.2.31'
     compile 'com.android.support:cardview-v7:27.1.0'
     compile 'com.android.support:design:27.1.0'
 }
