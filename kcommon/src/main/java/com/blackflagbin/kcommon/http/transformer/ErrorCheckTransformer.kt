@@ -3,22 +3,19 @@ package com.blackflagbin.kcommon.http.transformer
 
 import com.blackflagbin.kcommon.entity.net.ApiException
 import com.blackflagbin.kcommon.entity.net.IHttpResultEntity
+import com.blackflagbin.kcommon.entity.net.Optional
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 
-class ErrorCheckTransformer<T> : ObservableTransformer<IHttpResultEntity<T>, T> {
+class ErrorCheckTransformer<T> : ObservableTransformer<IHttpResultEntity<T>, Optional<T>> {
 
-    override fun apply(httpResultObservable: Observable<IHttpResultEntity<T>>): Observable<T> {
+    override fun apply(httpResultObservable: Observable<IHttpResultEntity<T>>): Observable<Optional<T>> {
         return httpResultObservable.map { httpResult ->
             if (!httpResult.isSuccess) {
                 throw ApiException(httpResult.errorCode, httpResult.errorMessage)
             }
-
-            if (httpResult.result == null) {
-                Any() as T
-            } else {
-                httpResult.result
-            }
+            //将返回的有效数据包装成Optional,避免rxjava2数据流中不能传递null的问题
+            Optional(httpResult.result)
         }
     }
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import com.blackflagbin.kcommon.base.BaseRefreshAndLoadMoreFragment
+import com.blackflagbin.kcommon.entity.net.Optional
 import com.blackflagbin.kcommon.widget.FixedLinearLayoutManager
 import com.blackflagbin.kcommonproject.R
 import com.blackflagbin.kcommonproject.common.entity.net.DataItem
@@ -23,7 +24,7 @@ import org.jetbrains.anko.bundleOf
  */
 @SuppressLint("ValidFragment")
 class MainPageFragment() :
-        BaseRefreshAndLoadMoreFragment<ApiService, CacheService, MainPageContract.IMainPagePresenter, List<DataItem>>(),
+        BaseRefreshAndLoadMoreFragment<ApiService, CacheService, MainPageContract.IMainPagePresenter, Optional<List<DataItem>>>(),
         MainPageContract.IMainPageView {
     private val mTypeArray: Array<String> by lazy {
         arrayOf("all", "Android", "iOS", "休息视频", "福利", "拓展资源", "前端", "瞎推荐", "App")
@@ -61,7 +62,7 @@ class MainPageFragment() :
         mPresenter.initData(mDataMap)
     }
 
-    override fun showContentView(data: List<DataItem>) {
+    override fun showContentView(data: Optional<List<DataItem>>) {
         mAdapter?.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
             startActivity(
                     WebActivity::class.java,

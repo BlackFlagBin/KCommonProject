@@ -1,6 +1,7 @@
 package com.blackflagbin.kcommonproject.mvp.presenter
 
 import com.blackflagbin.kcommon.base.BasePresenter
+import com.blackflagbin.kcommon.entity.net.Optional
 import com.blackflagbin.kcommon.facade.CommonLibrary
 import com.blackflagbin.kcommon.http.subscribers.NoProgressObserver
 import com.blackflagbin.kcommon.http.subscribers.ObserverCallBack
@@ -30,9 +31,9 @@ class MainPagePresenter(iMainPageView: MainPageContract.IMainPageView) :
                     dataMap!!["type"].toString(),
                     pageNo,
                     CommonLibrary.instance.pageSize).bindToLifecycle(mLifecycleProvider).subscribeWith(
-                    NoProgressObserver<List<DataItem>>(mView,
-                            object : ObserverCallBack<List<DataItem>> {
-                                override fun onNext(t: List<DataItem>) {
+                    NoProgressObserver<Optional<List<DataItem>>>(mView,
+                            object : ObserverCallBack<Optional<List<DataItem>>> {
+                                override fun onNext(t: Optional<List<DataItem>>) {
                                     mView.showSuccessView(t)
                                     mView.dismissLoading()
                                 }
@@ -47,7 +48,7 @@ class MainPagePresenter(iMainPageView: MainPageContract.IMainPageView) :
                     dataMap!!["type"].toString(),
                     pageNo,
                     CommonLibrary.instance.pageSize).bindToLifecycle(mLifecycleProvider).subscribeWith(
-                    NoProgressObserver<List<DataItem>>(mView,mIsLoadMore = true))
+                    NoProgressObserver<Optional<List<DataItem>>>(mView,mIsLoadMore = true))
         }
     }
 }
