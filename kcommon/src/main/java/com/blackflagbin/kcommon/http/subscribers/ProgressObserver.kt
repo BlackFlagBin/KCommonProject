@@ -8,6 +8,7 @@ import com.blackflagbin.kcommon.base.IBaseView
 import com.blackflagbin.kcommon.http.ErrorHandler
 import com.blackflagbin.kcommon.http.progress.ProgressCancelListener
 import com.blackflagbin.kcommon.http.progress.ProgressDialogHandler
+import io.reactivex.functions.Consumer
 import io.reactivex.observers.ResourceObserver
 
 class ProgressObserver<T>(
