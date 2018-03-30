@@ -9,7 +9,17 @@
     * 以Base开头的BaseActivity和BaseFragment。这种适合通用的开发。具体的使用请参考相关的demo。
     * 以BaseRefreshAndLoadMore开头的BaseRefreshAndLoadMoreActivity和BaseRefreshAndLoadMoreFragment。这种适合列表展示的页面开发，具备下拉刷新和上拉加载更多数据的功能。具体的使用请参考相关的demo。
     * [kotlin版本的demo](https://github.com/BlackFlagBin/KCommonProject) [java版本的demo](https://github.com/BlackFlagBin/KCommonDemoWithJava)
-![演示图片](https://user-gold-cdn.xitu.io/2018/3/30/16274b03e3f9e26b)
+### 图片展示
+* 总的演示
+![演示图片](https://github.com/BlackFlagBin/KCommonProject/blob/master/screenshot.gif?raw=true)
+* 下拉刷新和上拉加载更多
+![图片1](https://github.com/BlackFlagBin/KCommonProject/blob/master/screenshots/RefreshAndLoadMore.gif?raw=true)
+* 空页面
+![图片2](https://github.com/BlackFlagBin/KCommonProject/blob/master/screenshots/EmptyPage.gif?raw=true)
+* 在断网情况下加载缓存
+![图片3](https://github.com/BlackFlagBin/KCommonProject/blob/master/screenshots/LoadCacheData.gif?raw=true)
+* 网络请求错误并重新加载
+![图片4](https://github.com/BlackFlagBin/KCommonProject/blob/master/screenshots/ErrorPageAndReload.gif?raw=true)
 ### 基于Kotlin的使用说明（Java的使用具体参考java版本的demo）
 * 导入依赖
     * 在根目录中的build.gradle文件中加入
