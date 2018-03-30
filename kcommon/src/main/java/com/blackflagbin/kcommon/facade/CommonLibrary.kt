@@ -26,6 +26,26 @@ class CommonLibrary private constructor() {
     var onPageResumeListener: OnPageResumeListener? = null
     var onPagePauseListener: OnPagePauseListener? = null
 
+
+    /**
+     * 初始化
+     *
+     * @param context Application
+     * @param baseUrl retrofit所需的baseUrl
+     * @param apiClass retrofit使用的ApisService::Class.java
+     * @param cacheClass rxcache使用的CacheService::Class.java
+     * @param spName Sharedpreference文件名称
+     * @param isDebug 是debug环境还是release环境。debug环境有网络请求的日志，release反之
+     * @param startPage 分页列表的起始页，有可能是0，或者是2，这个看后台
+     * @param pageSize 分页大小
+     * @param headerMap 网络请求头的map集合，便于在网络请求添加统一的请求头，比如token之类
+     * @param errorHandleMap 错误处理的map集合，便于针对相关网络请求返回的错误码来做相应的处理，比如错误码401，token失效需要重新登录
+     * @param onPageCreateListener 对应页面activity或fragment相关生命周期的回调，便于在页面相关时机做一些统一处理，比如加入友盟统计需要在所有页面的相关生命周期加入一些处理
+     * @param onPageDestroyListener 对应页面activity或fragment相关生命周期的回调，便于在页面相关时机做一些统一处理，比如加入友盟统计需要在所有页面的相关生命周期加入一些处理
+     * @param onPageResumeListener 对应页面activity或fragment相关生命周期的回调，便于在页面相关时机做一些统一处理，比如加入友盟统计需要在所有页面的相关生命周期加入一些处理
+     * @param onPagePauseListener 对应页面activity或fragment相关生命周期的回调，便于在页面相关时机做一些统一处理，比如加入友盟统计需要在所有页面的相关生命周期加入一些处理
+     *
+     */
     fun initLibrary(
             context: Application,
             baseUrl: String,
