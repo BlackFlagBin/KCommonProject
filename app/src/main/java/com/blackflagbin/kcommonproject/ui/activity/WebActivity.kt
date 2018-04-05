@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import android.content.Intent
 import android.net.Uri
+import io.reactivex.Observable
 
 
 class WebActivity : BaseActivity<ApiService, CacheService, WebPresenter, Any?>(),
