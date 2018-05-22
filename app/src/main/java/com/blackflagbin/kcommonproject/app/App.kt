@@ -19,7 +19,7 @@ class App : Application() {
     companion object {
         fun startLoginActivity(context: Context, loginClazz: Class<*>) {
             CommonLibrary.instance.headerMap = hashMapOf(
-                    "token" to SPUtils.getInstance("KCommonDemo").getString("token", ""))
+                    "token" to SPUtils.getInstance("KCommonDemo").getString("token", "123"))
             context.startActivity(
                     Intent(
                             context,
@@ -30,6 +30,7 @@ class App : Application() {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         MultiDex.install(this)
+
     }
 
     override fun onCreate() {

@@ -4,6 +4,7 @@ import com.blackflagbin.kcommon.facade.CommonLibrary
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.rx_cache2.internal.RxCache
 import io.victoralbertos.jolyglot.GsonSpeaker
+import okhttp3.EventListener
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -30,7 +31,7 @@ class HttpProvider private constructor() {
         CommonLibrary.instance.context.cacheDir.setWritable(true)
         return RxCache.Builder().persistence(
                 CommonLibrary.instance.context.cacheDir, GsonSpeaker()).using(
-                        CommonLibrary.instance.cacheClass) as T
+                CommonLibrary.instance.cacheClass) as T
     }
 
     private fun provideOkHttpClient(headerMap: Map<String, String>? = CommonLibrary.instance.headerMap): OkHttpClient {
@@ -39,6 +40,7 @@ class HttpProvider private constructor() {
             true -> HttpLoggingInterceptor.Level.BODY
             else -> HttpLoggingInterceptor.Level.NONE
         }
+
         return OkHttpClient.Builder().connectTimeout(
                 DEFAULT_MILLISECONDS, TimeUnit.SECONDS).readTimeout(
                 DEFAULT_MILLISECONDS, TimeUnit.SECONDS).addInterceptor { chain ->
@@ -63,5 +65,6 @@ class HttpProvider private constructor() {
         val instance: HttpProvider
             get() = InnerClass.instance
     }
+
 
 }

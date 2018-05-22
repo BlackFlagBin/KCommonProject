@@ -16,9 +16,11 @@ import com.kennyc.view.MultiStateView
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_main_drawer.*
+import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.bundleOf
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.toast
+import retrofit2.Retrofit
 
 class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>(),
         MainContract.IMainView {
@@ -45,7 +47,6 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
 
     override fun initView() {
         super.initView()
-
         setupSlidingView()
         setupViewPager()
         rl_right.onClick {
@@ -66,7 +67,6 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
     }
 
     override fun initData() {
-
     }
 
     override fun showContentView(data: Any?) {
@@ -97,6 +97,7 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
                 this, cache.cacheSize)
         cache.clear()
         toast("清除缓存$cacheSize")
+
 
     }
 
