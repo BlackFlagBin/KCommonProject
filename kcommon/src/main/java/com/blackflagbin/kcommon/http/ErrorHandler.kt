@@ -28,7 +28,7 @@ object ErrorHandler {
             val finalContext = context
             Observable.just(1).observeOn(AndroidSchedulers.mainThread()).subscribe {
                 Toast.makeText(
-                        finalContext, e.message, Toast.LENGTH_SHORT).show()
+                        finalContext, e.msg, Toast.LENGTH_SHORT).show()
             }
 
             val resultCode = (e as IApiException).resultCode
