@@ -10,6 +10,7 @@ import com.blackflagbin.kcommonproject.BuildConfig
 import com.blackflagbin.kcommonproject.common.http.ApiService
 import com.blackflagbin.kcommonproject.common.http.CacheService
 import com.blankj.utilcode.util.SPUtils
+import com.squareup.leakcanary.LeakCanary
 
 /**
  * Created by blackflagbin on 2018/3/19.
@@ -35,6 +36,12 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
         CommonLibrary.instance.initLibrary(this,
                 BuildConfig.APP_URL,
                 ApiService::class.java,

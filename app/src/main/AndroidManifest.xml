@@ -25,7 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.WebActivity">
+        <activity
+            android:name=".ui.activity.WebActivity"
+            android:process=":web">
         </activity>
     </application>
 

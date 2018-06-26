@@ -1,6 +1,9 @@
 package com.blackflagbin.kcommonproject.ui.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Process
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.KeyEvent
 import android.view.View
@@ -17,9 +20,6 @@ import com.kennyc.view.MultiStateView
 import kotlinx.android.synthetic.main.activity_web.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import android.content.Intent
-import android.net.Uri
-import io.reactivex.Observable
 
 
 class WebActivity : BaseActivity<ApiService, CacheService, WebPresenter, Any?>(),
@@ -49,7 +49,7 @@ class WebActivity : BaseActivity<ApiService, CacheService, WebPresenter, Any?>()
     override fun initView() {
         super.initView()
         rl_left.onClick {
-           finish()
+            finish()
         }
         tv_middle.text = mTitle
 
@@ -109,6 +109,12 @@ class WebActivity : BaseActivity<ApiService, CacheService, WebPresenter, Any?>()
             }
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //将WebActivity置于一个单独的进程，在结束的时候杀死进程来避免内存泄漏
+        Process.killProcess(Process.myPid())
     }
 
 }
