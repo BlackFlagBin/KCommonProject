@@ -31,7 +31,7 @@ class MainPagePresenter(iMainPageView: MainPageContract.IMainPageView) :
                     dataMap!!["type"].toString(),
                     pageNo,
                     CommonLibrary.instance.pageSize).bindToLifecycle(mLifecycleProvider).subscribeWith(
-                    NoProgressObserver<Optional<List<DataItem>>>(mView,
+                    NoProgressObserver<Optional<List<DataItem>>, Optional<List<DataItem>>>(mView,
                             object : ObserverCallBack<Optional<List<DataItem>>> {
                                 override fun onNext(t: Optional<List<DataItem>>) {
                                     mView.showSuccessView(t)
@@ -48,7 +48,9 @@ class MainPagePresenter(iMainPageView: MainPageContract.IMainPageView) :
                     dataMap!!["type"].toString(),
                     pageNo,
                     CommonLibrary.instance.pageSize).bindToLifecycle(mLifecycleProvider).subscribeWith(
-                    NoProgressObserver<Optional<List<DataItem>>>(mView,mIsLoadMore = true))
+                    NoProgressObserver<Optional<List<DataItem>>, Optional<List<DataItem>>>(
+                            mView,
+                            mIsLoadMore = true))
         }
     }
 }

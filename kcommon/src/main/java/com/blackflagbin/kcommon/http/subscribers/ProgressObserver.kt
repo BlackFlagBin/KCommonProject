@@ -11,8 +11,8 @@ import com.blackflagbin.kcommon.http.progress.ProgressDialogHandler
 import io.reactivex.functions.Consumer
 import io.reactivex.observers.ResourceObserver
 
-class ProgressObserver<T>(
-        private val mBaseView: IBaseView<T>,
+class ProgressObserver<T,V>(
+        private val mBaseView: IBaseView<V>,
         private val mCallBack: ObserverCallBack<T> = object : ObserverCallBack<T> {
             override fun onNext(t: T) {
             }
@@ -43,8 +43,8 @@ class ProgressObserver<T>(
 
     override fun onNext(t: T) {
         if (mIsLoadMore) {
-            if (mBaseView is IBaseRefreshAndLoadMoreView<T>) {
-                mBaseView.afterLoadMore(t)
+            if (mBaseView is IBaseRefreshAndLoadMoreView) {
+                mBaseView.afterLoadMore(t as V)
             }
         }
         mCallBack.onNext(t)

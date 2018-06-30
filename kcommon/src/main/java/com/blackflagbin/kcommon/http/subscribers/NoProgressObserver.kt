@@ -8,8 +8,8 @@ import com.blackflagbin.kcommon.http.ErrorHandler
 
 import io.reactivex.observers.ResourceObserver
 
-class NoProgressObserver<T>(
-        private val mBaseView: IBaseView<T>,
+class NoProgressObserver<T,V>(
+        private val mBaseView: IBaseView<V>,
         private val mCallBack: ObserverCallBack<T> = object : ObserverCallBack<T> {
             override fun onNext(t: T) {
             }
@@ -22,8 +22,8 @@ class NoProgressObserver<T>(
 
     override fun onNext(t: T) {
         if (mIsLoadMore) {
-            if (mBaseView is IBaseRefreshAndLoadMoreView<T>) {
-                mBaseView.afterLoadMore(t)
+            if (mBaseView is IBaseRefreshAndLoadMoreView) {
+                mBaseView.afterLoadMore(t as V)
             }
         }
         mCallBack.onNext(t)
@@ -32,7 +32,7 @@ class NoProgressObserver<T>(
     override fun onError(e: Throwable) {
         ErrorHandler.handleError(e, mBaseView)
         if (mIsLoadMore) {
-            if (mBaseView is IBaseRefreshAndLoadMoreView<T>) {
+            if (mBaseView is IBaseRefreshAndLoadMoreView<*>) {
                 mBaseView.afterLoadMoreError(e)
             }
         } else {

@@ -9,8 +9,12 @@ import com.blackflagbin.kcommon.facade.CommonLibrary
 import com.blackflagbin.kcommonproject.BuildConfig
 import com.blackflagbin.kcommonproject.common.http.ApiService
 import com.blackflagbin.kcommonproject.common.http.CacheService
+import com.blackflagbin.kcommonproject.common.util.AppBlockCanaryContext
 import com.blankj.utilcode.util.SPUtils
 import com.squareup.leakcanary.LeakCanary
+import com.github.moduth.blockcanary.BlockCanary
+
+
 
 /**
  * Created by blackflagbin on 2018/3/19.
@@ -41,7 +45,9 @@ class App : Application() {
             // You should not init your app in this process.
             return;
         }
-        LeakCanary.install(this);
+        LeakCanary.install(this)
+        BlockCanary.install(this, AppBlockCanaryContext()).start()
+
         CommonLibrary.instance.initLibrary(this,
                 BuildConfig.APP_URL,
                 ApiService::class.java,

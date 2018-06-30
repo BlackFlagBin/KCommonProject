@@ -66,6 +66,8 @@ dependencies {
     api 'com.yarolegovich:sliding-root-nav:1.1.0'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    api 'com.github.markzhai:blockcanary-android:1.5.0'
+
     api project(':kcommon')
 //    api 'com.blackflagbin:kcommonlibrary:0.0.5-test'
 }
