@@ -181,6 +181,7 @@ abstract class BaseFragment<out A, out C, P : IBasePresenter, in D> : RxFragment
 
     override fun showErrorView(errorMsg: String) {
         mMultiStateView?.viewState = MultiStateView.VIEW_STATE_ERROR
+        mTvErrorMsg?.text = errorMsg
     }
 
     // FragmentTransaction 调用show 回调

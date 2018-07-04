@@ -26,6 +26,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/default_text_top_margin"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="网络连接异常，请重新加载"
             android:textColor="@color/gray_dark1"
             android:textSize="@dimen/text_big"/>

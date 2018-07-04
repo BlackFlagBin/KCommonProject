@@ -121,6 +121,7 @@ abstract class BaseActivity<out A, out C, P : IBasePresenter, in D> : RxAppCompa
     //显示错误布局
     override fun showErrorView(errorMsg: String) {
         mMultiStateView?.viewState = MultiStateView.VIEW_STATE_ERROR
+        mTvErrorMsg?.text=errorMsg
     }
 
     //接收从上一个页面传递的参数
