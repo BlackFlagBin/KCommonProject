@@ -4,7 +4,6 @@ import com.blackflagbin.kcommon.facade.CommonLibrary
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.rx_cache2.internal.RxCache
 import io.victoralbertos.jolyglot.GsonSpeaker
-import okhttp3.EventListener
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -60,7 +59,7 @@ class HttpProvider private constructor() {
     companion object {
 
         //默认超时时间
-        const val DEFAULT_MILLISECONDS: Long = 10
+        const val DEFAULT_MILLISECONDS: Long = 60
 
         val instance: HttpProvider
             get() = InnerClass.instance
