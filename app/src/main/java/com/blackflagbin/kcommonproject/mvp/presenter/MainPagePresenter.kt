@@ -26,31 +26,30 @@ class MainPagePresenter(iMainPageView: MainPageContract.IMainPageView) :
             mView.showTip("网络已断开，当前数据为缓存数据")
         }
         if (pageNo == CommonLibrary.instance.startPage) {
+            //如果请求的是分页的首页，必须先调用这个方法
             mView.beforeInitData()
             mModel.getData(
                     dataMap!!["type"].toString(),
                     pageNo,
                     CommonLibrary.instance.pageSize).bindToLifecycle(mLifecycleProvider).subscribeWith(
-                    NoProgressObserver<Optional<List<DataItem>>, Optional<List<DataItem>>>(mView,
-                            object : ObserverCallBack<Optional<List<DataItem>>> {
-                                override fun onNext(t: Optional<List<DataItem>>) {
-                                    mView.showSuccessView(t)
-                                    mView.dismissLoading()
-                                }
+                    NoProgressObserver(mView, object : ObserverCallBack<Optional<List<DataItem>>> {
+                        override fun onNext(t: Optional<List<DataItem>>) {
+                            mView.showSuccessView(t.data)
+                            mView.dismissLoading()
+                        }
 
-                                override fun onError(e: Throwable) {
-                                    mView.showErrorView("")
-                                    mView.dismissLoading()
-                                }
-                            }))
+                        override fun onError(e: Throwable) {
+                            mView.showErrorView("网络连接异常")
+                            mView.dismissLoading()
+                        }
+                    }))
         } else {
             mModel.getData(
                     dataMap!!["type"].toString(),
                     pageNo,
                     CommonLibrary.instance.pageSize).bindToLifecycle(mLifecycleProvider).subscribeWith(
-                    NoProgressObserver<Optional<List<DataItem>>, Optional<List<DataItem>>>(
-                            mView,
-                            mIsLoadMore = true))
+                    NoProgressObserver(
+                            mView, mIsLoadMore = true))
         }
     }
 }

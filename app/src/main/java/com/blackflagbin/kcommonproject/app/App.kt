@@ -22,9 +22,14 @@ import com.github.moduth.blockcanary.BlockCanary
 class App : Application() {
 
     companion object {
+        //跳转到登录页面，需要传入context和登录页面Activity的Class对象
         fun startLoginActivity(context: Context, loginClazz: Class<*>) {
+
+            //重置网络请求头，很好理解，退出登录了肯定要清空之前的请求头
             CommonLibrary.instance.headerMap = hashMapOf(
                     "token" to SPUtils.getInstance("KCommonDemo").getString("token", "123"))
+
+            //跳转到登录页面并清空之前的任务栈
             context.startActivity(
                     Intent(
                             context,
@@ -32,22 +37,28 @@ class App : Application() {
         }
     }
 
+    //Multidex
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         MultiDex.install(this)
-
     }
 
     override fun onCreate() {
         super.onCreate()
+
+        //初始化LeakCanary，用于测试内存泄漏
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
             return;
         }
         LeakCanary.install(this)
+
+        //初始化BlockCanary，用于测试UI卡顿
         BlockCanary.install(this, AppBlockCanaryContext()).start()
 
+
+        //初始化CommonLibrary
         CommonLibrary.instance.initLibrary(this,
                 BuildConfig.APP_URL,
                 ApiService::class.java,

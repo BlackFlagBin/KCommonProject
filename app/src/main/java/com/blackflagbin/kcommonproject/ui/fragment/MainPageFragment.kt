@@ -24,7 +24,7 @@ import org.jetbrains.anko.bundleOf
  */
 @SuppressLint("ValidFragment")
 class MainPageFragment() :
-        BaseRefreshAndLoadMoreFragment<ApiService, CacheService, MainPageContract.IMainPagePresenter, Optional<List<DataItem>>>(),
+        BaseRefreshAndLoadMoreFragment<ApiService, CacheService, MainPageContract.IMainPagePresenter, List<DataItem>>(),
         MainPageContract.IMainPageView {
     private val mTypeArray: Array<String> by lazy {
         arrayOf("all", "Android", "iOS", "休息视频", "福利", "拓展资源", "前端", "瞎推荐", "App")
@@ -62,7 +62,7 @@ class MainPageFragment() :
         mPresenter.initData(mDataMap)
     }
 
-    override fun showContentView(data: Optional<List<DataItem>>) {
+    override fun showContentView(data: List<DataItem>) {
         mAdapter?.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
             startActivity(
                     WebActivity::class.java,
