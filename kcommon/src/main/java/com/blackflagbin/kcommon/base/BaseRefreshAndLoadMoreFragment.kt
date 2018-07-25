@@ -56,6 +56,12 @@ abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndL
             } else {
                 mAdapter?.setNewData((data.data as ILoadMoreData).list as List<Nothing>)
             }
+        } else {
+            if (data is List<*>) {
+                mAdapter?.setNewData(data as List<Nothing>)
+            } else {
+                mAdapter?.setNewData((data as ILoadMoreData).list as List<Nothing>)
+            }
         }
         showContentView(data)
     }
@@ -74,6 +80,14 @@ abstract class BaseRefreshAndLoadMoreFragment<out A, out C, P : IBaseRefreshAndL
             } else {
                 mIsLoadComplete = (data.data as ILoadMoreData).list.size < PAGE_SIZE
                 mAdapter?.addData((data.data as ILoadMoreData).list as List<Nothing>)
+            }
+        }else{
+            if (data is List<*>) {
+                mIsLoadComplete = (data as List<*>).size < PAGE_SIZE
+                mAdapter?.addData(data as List<Nothing>)
+            } else {
+                mIsLoadComplete = (data as ILoadMoreData).list.size < PAGE_SIZE
+                mAdapter?.addData((data as ILoadMoreData).list as List<Nothing>)
             }
         }
         mCurPage++

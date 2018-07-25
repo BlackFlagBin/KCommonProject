@@ -9,7 +9,7 @@
 * 提供了自动生成MVP相关文件的模板代码，实现了真正一键创建MVP的所有代码
 
 #### 集成方法
-* api 'com.blackflagbin:kcommonlibrary:1.0.0'
+* api 'com.blackflagbin:kcommonlibrary:1.0.1'
 * 在根目录的gradle文件中添加：
 ```
 allprojects {
