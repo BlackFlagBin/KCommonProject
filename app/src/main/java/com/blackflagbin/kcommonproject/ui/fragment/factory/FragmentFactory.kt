@@ -15,4 +15,8 @@ object FragmentFactory {
         }
         return mFragmentMap[position]!!
     }
+
+    fun clear() {
+        mFragmentMap.clear()
+    }
 }

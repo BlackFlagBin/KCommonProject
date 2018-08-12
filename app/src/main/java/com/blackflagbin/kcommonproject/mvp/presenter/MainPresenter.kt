@@ -3,6 +3,7 @@ package com.blackflagbin.kcommonproject.mvp.presenter
 import com.blackflagbin.kcommon.base.BasePresenter
 import com.blackflagbin.kcommonproject.mvp.contract.MainContract
 import com.blackflagbin.kcommonproject.mvp.model.MainModel
+import io.reactivex.Observable
 
 class MainPresenter(iMainView: MainContract.IMainView) :
         BasePresenter<MainContract.IMainModel, MainContract.IMainView>(iMainView),

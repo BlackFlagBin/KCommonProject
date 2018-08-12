@@ -10,6 +10,7 @@ import com.blackflagbin.kcommonproject.common.http.CacheService
 import com.blackflagbin.kcommonproject.mvp.contract.MainContract
 import com.blackflagbin.kcommonproject.mvp.presenter.MainPresenter
 import com.blackflagbin.kcommonproject.ui.adapter.pageradapter.MainPagerAdapter
+import com.blackflagbin.kcommonproject.ui.fragment.factory.FragmentFactory
 import com.blankj.utilcode.util.CacheUtils
 import com.bumptech.glide.Glide
 import com.kennyc.view.MultiStateView
@@ -97,8 +98,12 @@ class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>
                 this, cache.cacheSize)
         cache.clear()
         toast("清除缓存$cacheSize")
+    }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        //清除缓存的fragment，避免内存泄漏
+        FragmentFactory.clear()
     }
 
 }
