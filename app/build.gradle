@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.blackflagbin.kcommonproject"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         multiDexEnabled true
         versionCode 1
         versionName "1.0"
@@ -68,6 +68,6 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     api 'com.github.markzhai:blockcanary-android:1.5.0'
 
-//    api project(':kcommon')
-    implementation 'com.blackflagbin:kcommonlibrary:1.0.1'
+    api project(':kcommon')
+//    implementation 'com.blackflagbin:kcommonlibrary:1.0.1'
 }

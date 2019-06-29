@@ -12,18 +12,14 @@ import com.blackflagbin.kcommonproject.mvp.presenter.MainPresenter
 import com.blackflagbin.kcommonproject.ui.adapter.pageradapter.MainPagerAdapter
 import com.blackflagbin.kcommonproject.ui.fragment.factory.FragmentFactory
 import com.blankj.utilcode.util.CacheDiskUtils
-import com.blankj.utilcode.util.CacheUtils
 import com.bumptech.glide.Glide
 import com.kennyc.view.MultiStateView
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_main_drawer.*
-import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.bundleOf
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.toast
-import retrofit2.Retrofit
-import java.util.*
 
 class MainActivity : BaseActivity<ApiService, CacheService, MainPresenter, Any?>(),
         MainContract.IMainView {
